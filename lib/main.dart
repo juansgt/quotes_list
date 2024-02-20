@@ -1,19 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:quotes_list/card_service.dart';
+import 'package:quotes_list/i_card_service.dart';
 import 'quote.dart';
 import 'quote_card.dart';
 
 void main() {
+  
+  ICardService cardService = CardService();
+
   runApp(MaterialApp(
-    home: QuoteList(),
+    home: QuoteList(cardService: cardService),
   ));
 }
 
 class QuoteList extends StatefulWidget {
+
+  final ICardService cardService;
+  QuoteList({ required this.cardService });
+
   @override
-  State createState() => QuoteListState();
+  State createState() => QuoteListState(cardService: cardService);
 }
 
 class QuoteListState extends State<QuoteList> {
+
+  final ICardService cardService;
+  QuoteListState({ required this.cardService });
 
   List<Quote> quotes = [
     Quote(author: 'Oscar Wilde', text: 'Be yourself; everyone else is already taken'),
@@ -34,7 +46,7 @@ class QuoteListState extends State<QuoteList> {
         backgroundColor: Colors.redAccent,
       ),
       body: Column(
-        children: quotes.map((quote) => QuoteCard(quote: quote)).toList(),
+        children: quotes.map((quote) => cardService.getCard(quote: quote)).toList(),
       ),
     );
   }
