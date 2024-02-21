@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:quotes_list/card_service.dart';
 import 'package:quotes_list/i_card_service.dart';
 import 'quote.dart';
-import 'quote_card.dart';
 
 void main() {
   
