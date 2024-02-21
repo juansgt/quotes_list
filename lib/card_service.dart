@@ -5,7 +5,7 @@ import 'package:quotes_list/quote_card.dart';
 
 class CardService implements ICardService {
   @override
-  StatelessWidget getCard({ required Quote quote }) {
-    return QuoteCard(quote: quote);
+  StatelessWidget getCard({ required Quote quote, VoidCallback? delete }) {
+    return QuoteCard(quote: quote, delete: delete);
   }
 }
